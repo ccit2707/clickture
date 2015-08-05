@@ -926,9 +926,11 @@ h2 {
 	margin-bottom: 0.5em; 
 }
 
+
 #page img {
 	height: auto;
 	max-width: 33%;
+	border-radius: 20%; 
 }
 
 #signature{
@@ -1006,6 +1008,7 @@ h2, li{
 	float: right;
 	height: auto; 
 }
+
 @media only screen and (max-width: 2000px) {
 	#sidebar-side { 
 		width: 26%;	
@@ -1102,9 +1105,9 @@ background-color: #2b2b2b;
 
 .main-navigation a{
 	font-size: 1em; 
-	max-width: 960px;
-	position: relative;
 	width: 100%;
+	padding: 1em; 
+	margin: auto;  
 }
 
 body, button, input, select, textarea {
@@ -1116,12 +1119,18 @@ body, button, input, select, textarea {
 #site-navigation { 
 	max-width: 100%;
 	height: auto; 
+	text-align: center; 
+	background: #FFFFFF; 
 }
 
-.site-branding h1{
+
+
+.site-branding {
 	max-width: 100%;
 	height: auto; 
+	text-align: center; 
 }
+
 
 li{
 	font-size: 100%;  
@@ -1160,7 +1169,9 @@ p{
 }
 
 
-/*footer widgets stack in smaller devices */
+/*--------------------------------------------------------------
+	Media Queries 
+--------------------------------------------------------------*/ 
 
 @media screen and (max-width: 780px){
 /* this allows these changes to only exist when the screen is 780px or smaller */ 
@@ -1229,4 +1240,231 @@ p{
 		float: none; 
 	}
 }
+
+/* ----------- iPhone 4 and 4S ----------- */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+	#sidebar-side{
+		clear:both;
+		float: center; 
+		width: 100%; 
+		text-align: center;
+	}
+
+
+	#page img {
+		padding-left: 3em; 
+		height: auto;
+		max-width: 66%;
+		border-radius: 20%;
+	}
+	#main{
+		width: 100%;
+		float: center;
+	}
+	
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) and (max-width: 600px) {
+
+	#sidebar-side{
+		width: 100%; 
+		text-align: center;
+	}
+
+
+	#page img {
+		height: auto;
+		max-width: 66%;
+	}
+	#main{
+		width: 100%;
+		float: center;
+	}
+	
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) and (max-height: 600px) {
+
+	#sidebar-side{
+		clear:both;
+		float: center; 
+		width: 100%; 
+		text-align: center;
+	}
+
+
+	#page img {
+		padding-left: 3em; 
+		height: auto;
+		max-width: 66%;
+		border-radius: 20%;
+	}
+	#main{
+		width: 100%;
+		float: center;
+	}
+	
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+
+	#sidebar-side{
+		clear:both;
+		float: center; 
+		width: 100%; 
+		text-align: center;
+	}
+
+	#page img { 
+		height: auto;
+		max-width: 66%;
+	}
+	#main{
+		width: 100%;
+		float: center;
+	}
+	
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+
+	#sidebar-side{
+		width: 100%; 
+		text-align: center;
+	}
+
+	#page img {
+		height: auto;
+		max-width: 66%;
+	}
+	#main{
+		width: 100%;
+		float: center;
+	}
+	
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+
+	#sidebar-side{
+		width: 100%; 
+		text-align: center;
+	}
+
+
+
+	#page img {
+		padding-left: 3em; 
+		height: auto;
+		max-width: 66%;
+		border-radius: 20%;
+	}
+	#main{
+		width: 100%;
+		float: center;
+	}
+	
+}
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+	
+	#sidebar-side{
+		width: 100%; 
+		text-align: center;
+	}
+
+
+	#page img {
+		height: auto;
+		max-width: 66%;
+	}
+	#main{
+		width: 100%;
+		float: center;
+	}
+	
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+	
+	#sidebar-side{
+		width: 100%; 
+		text-align: center;
+	}
+
+
+
+	#page img {
+		height: auto;
+		max-width: 66%;
+	}
+	#main{
+		width: 100%;
+		float: center;
+	}
+	
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) {
+
+	#sidebar-side{
+		clear:both;
+		float: center; 
+		width: 100%; 
+		text-align: center;
+	}
+
+
+	#page img {
+		padding-left: 3em; 
+		height: auto;
+		max-width: 66%;
+		border-radius: 20%;
+	}
+	#main{
+		width: 100%;
+		float: center;
+	}
+	
+}
+
+
+/* iPhone 5 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape){
+
+	#sidebar-side{
+		clear:both;
+		float: center; 
+		width: 100%; 
+		text-align: center;
+	}
+
+
+	#page img {
+		padding-left: 3em; 
+		height: auto;
+		max-width: 66%;
+		border-radius: 20%;
+	}
+	#main{
+		width: 100%;
+		float: center;
+	}
+	
+}
+
+
+
+
 /* Kyle additions end here */ 

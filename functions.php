@@ -258,8 +258,8 @@ require get_template_directory() . '/inc/jetpack.php';
 		// this provides my custom luna gravatar icon in the discussion options page 
 	}
 
-	// Add Signature Image after single post
-	add_filter('the_content','add_signature');
+	/* Add Signature Image after single post */ 
+ add_filter('the_content','add_signature');
 	function add_signature($text) {
 		global $post;
 		
@@ -269,13 +269,15 @@ require get_template_directory() . '/inc/jetpack.php';
 		return $text;
 	}
 
+
 	//this function limits the number of words displayed on the home page for posts
 	function custom_excerpt_length( $length ) {
 		return 20;
 	}
 
 	add_filter( 'excerpt_length', 'custom_excerpt_length',999 );
-	//this places a message and link after every post
+	/*this places a message and link after every post */ 
+	
 	function everything_is_awesome($content){
 		$content .= 'Watch out for this muggle author, J.K. Rowling! She spreads lies!!! <a
 href="http://www.jkrowling.com/en_GB/">http:
