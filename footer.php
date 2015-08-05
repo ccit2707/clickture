@@ -9,33 +9,7 @@
 
 ?>
 
-		</div><!-- #content -->
-
-	
-		<div class="container">
-		
-		<footer id="colophon" class="site-footer" role="contentinfo">
-	<div class="bottomMenu">
-              <?php
-//this section of code creates the menu at the bottom of the page, inside the footer
-wp_nav_menu(array(
-    'theme_location' => 'secondary'
-));
-?>  
-    </div>
-	        <div id="footer-widgets">
-	            <?php
-if (is_active_sidebar('footer')):
-?>
-	                <aside id="widget-foot" class="widget-foot">
-	                    <?php
-    dynamic_sidebar('footer');
-?>
-	                </aside>
-	            <?php
-endif;
-?>
-	        </div><!-- end #footer-widgets -->
+	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
