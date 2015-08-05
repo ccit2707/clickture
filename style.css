@@ -908,6 +908,7 @@ body{
 
 #page{
 	background-color: #25AAE1; 
+	border-radius: 25px;
 	color: #FFFFFF; 
 	line-height: 135%;
 	margin: 3em auto; /* 48px / 16px*/
