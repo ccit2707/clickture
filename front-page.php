@@ -1,17 +1,9 @@
 <?php
-/**
- * The template for displaying all pages.
+ /**
+ * Template Name: Front Page 
  *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
- *
- * @package clickture
- */
-
-get_header(); ?>
-
+ * @package Fluffy
+ */get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 		<?php  if ( have_posts() ) : ?>
@@ -19,7 +11,7 @@ get_header(); ?>
 			<?php
 	
 	if ( is_home() ) {
-		query_posts('cat=');
+		query_posts('cat=193');
 		/*This limits which category is displayed on the home page.  In this instance, I selected category 193, the value appointed to 'Ravenclaw' by WordPress */
 	}
 
