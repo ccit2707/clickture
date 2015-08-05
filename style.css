@@ -889,15 +889,7 @@ object {
 
 
 /* Additions by Kyle */ 
-/*
-Theme Name: Fluffy-Kyle Child Theme
-Theme URI: http://clients.codediva.com/sheridan/
-Description: Custom child theme for the fluffy-master theme
-Author: Kyle Johnson
-Author URI: facebook.com/nolimitonimagination
-Version: 1.0
-template: fluffy-master 
-*/
+
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, time, mark, audio, video{
 	font-size: 100%; 
@@ -906,25 +898,26 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
 }
 
 body{
-	background:  url("http://img1.wikia.nocookie.net/__cb20091129184403/harrypotter/images/6/6c/Ravenclaw%E2%84%A2_Crest_(Painting).png") no-repeat scroll  #222F5B; 
+	background:  url("imgs/title.png") no-repeat scroll  #352F1B; 
 	background-size: 10%;
 	/* This makes my background image dynamic in size; it will resize according to the width of the screen */
-	color:#E2C54F;
+	color:#FFFFFF;
 	font-family: "Oswald", "Fjalla One", "Arial Narrow", Arial, Helvetica, sans-serif;
 	font-size: 1em; 
 }
 
 #page{
-	background-color: #222F5B; 
-	color: #E2C54F; 
+	background-color: #25AAE1; 
+	color: #FFFFFF; 
 	line-height: 135%;
 	margin: 3em auto; /* 48px / 16px*/
-	max-width: 960px;
+	max-width: 840px;
 	position: relative;
 	width: 90%;
+	padding: 2%; 
 	}
 h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a{
-	color: #E2C54F
+	color: #FFFFFF
 }
 
 h2 {
