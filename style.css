@@ -1099,7 +1099,7 @@ article.post-box[id*="post-"] {
 
 #button, .nav-previous a, .nav-next a, .page-numbers, a.page-numbers
 {
-background-color: #2b2b2b;
+background-color: #FFFFFF;
 }
 
 
@@ -1377,18 +1377,13 @@ p{
 /* Desktops and laptops ----------- */
 @media only screen  and (min-width : 1224px) {
 	
-	#sidebar-side{
-		width: 100%; 
-		text-align: center;
-	}
-
 
 	#page img {
 		height: auto;
 		max-width: 66%;
 	}
 	#main{
-		width: 100%;
+		width: 66%;
 		float: center;
 	}
 	

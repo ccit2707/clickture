@@ -119,7 +119,7 @@ function custom_post_type() {
 		* Parent and child items. A non-hierarchical CPT
 		* is like Posts.
 		*/	
-		'hierarchical'        => false,
+		'hierarchical'        => true,
 		'public'              => true,
 		'show_ui'             => true,
 		'show_in_menu'        => true,
@@ -148,7 +148,7 @@ add_action( 'init', 'custom_post_type', 0 );
 
 
 function add_my_post_types_to_query( $query ) {
-	if ( is_home() && $query->is_main_query() )
+	if ( $query->is_main_query() )
 		$query->set( 'post_type', array( 'post', 'locations' ) );
 	return $query;
 }
@@ -158,12 +158,6 @@ add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
 
 require get_stylesheet_directory() . '/inc/options.php';
 // FINISH CUSTOM POST TYPE
-
-
-
-
-
-
 
 
  
@@ -244,29 +238,18 @@ require get_template_directory() . '/inc/jetpack.php';
 	/**
  * Register widgetized area and update sidebar with default widgets
  */
-	function magazino_widgets_init() {
+	function widgets_init() {
 		//these allow the sidebar to exist
 		register_sidebar( array('name' => __( 'Footer Sidebar', 'clickture' ),'id' => 'sidebar-1','before_widget' => '<aside id="%1$s" class="widget %2$s">','after_widget' => "</aside>",'before_title' => '<div class="widget-title">','after_title' => '</div>',) );
 		register_sidebar( array('name' => __( 'Side Sidebar', 'clickture' ),'id' => 'sidebar-2','before_widget' => '<aside id="%1$s" class="widget %2$s">','after_widget' => "</aside>",'before_title' => '<div class="widget-title">','after_title' => '</div>',) );
 	}
-
-	add_action( 'widgets_init', 'magazino_widgets_init' );
+	add_action( 'widgets_init', 'widgets_init' );
+	
 	function cd_custom_gravatar ($avatar_defaults) {
 		$myavatar = get_stylesheet_directory_uri() . '/imgs/luna.png';
 		$avatar_defaults[$myavatar] = __( 'Custom Gravatar', 'YOUR TEXT DOMAIN' );
 		return $avatar_defaults;
 		// this provides my custom luna gravatar icon in the discussion options page 
-	}
-
-	/* Add Signature Image after single post */ 
- add_filter('the_content','add_signature');
-	function add_signature($text) {
-		global $post;
-		
-		if($post->post_type == 'post') $text .= '<div class="signature">
-<img src="https://scontent-lga1-1.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/10325566_10153213144815668_1506123044450425268_n.jpg?oh=77ae4d00762405fa1f3111468ce96c5b&oe=56186848" alt="Kyle Johnson" />
-</div>';
-		return $text;
 	}
 
 
@@ -279,9 +262,8 @@ require get_template_directory() . '/inc/jetpack.php';
 	/*this places a message and link after every post */ 
 	
 	function everything_is_awesome($content){
-		$content .= 'Watch out for this muggle author, J.K. Rowling! She spreads lies!!! <a
-href="http://www.jkrowling.com/en_GB/">http:
-//www.jkrowling.com/en_GB/!</a>';
+		$content .= 'Check out more hotspots at <a
+href="http://www.seetorontonow.com/">http://www.seetorontonow.com/!</a>';
 		return $content;
 	}
 
