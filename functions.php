@@ -136,6 +136,16 @@ function custom_post_type()
 add_action( 'init', 'custom_post_type', 0 );	
 // Hook into the 'init' action to genarate the custom post 
 
+function show_cpt_in_categories ($query)
+{
+	if( $query->is_category() && $query->is_main_query() )
+	{
+		$query->set( 'post_type', array ('locations'));
+	}
+}
+add_action('pre_get_posts', 'show_cpt_in_categories');
+
+
 
 require get_stylesheet_directory() . '/inc/options.php';
 
