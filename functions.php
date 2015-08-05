@@ -87,12 +87,13 @@ add_action( 'after_setup_theme', 'clickture_setup' );
  */
  
 // SAAD BEGIN CUSTOM POST TYPE	
-function custom_post_type() {
+function custom_post_type() 
+{
 
-// Set UI labels for Custom Post Type
+	// Set UI labels for Custom Post Type
 	$labels = array(
-		'name'                => _x( 'Locations', 'Post Type General Name', 'clickture' ),
-		'singular_name'       => _x( 'Location', 'Post Type Singular Name', 'clickture' ),
+		'name'                => __( 'Locations', 'Post Type General Name', 'clickture' ),
+		'singular_name'       => __( 'Location', 'Post Type Singular Name', 'clickture' ),
 		'menu_name'           => __( 'Locations', 'clickture' ),
 		'all_items'           => __( 'All Locations', 'clickture' ),
 		'view_item'           => __( 'View Location', 'clickture' ),
@@ -105,20 +106,16 @@ function custom_post_type() {
 		'not_found_in_trash'  => __( 'Not found in Trash', 'clickture' ),
 	);
 	
-// Set other options for Custom Post Type
+	// Set other options for Custom Post Type
 	
 	$args = array(
 		'label'               => __( 'locations', 'clickture' ),
 		'description'         => __( 'Interesting Locations in the GTA', 'clickture' ),
 		'labels'              => $labels,
-		// Features this CPT supports in Post Editor
-		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'comments', ),
-		// You can associate this CPT with a taxonomy or custom taxonomy. 
-		'taxonomies'          => array( 'category', 'post_tag', 'locations'),
-		/* A hierarchical CPT is like Pages and can have
-		* Parent and child items. A non-hierarchical CPT
-		* is like Posts.
-		*/	
+		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'comments', ), 
+		// Features of the CPT supports in Post Editor 
+		'taxonomies'          => array( 'category', 'post_tag'), 
+		// adds the regular WP categories and tags to the CPT 
 		'hierarchical'        => true,
 		'public'              => true,
 		'show_ui'             => true,
@@ -132,32 +129,15 @@ function custom_post_type() {
 		'publicly_queryable'  => true,
 		'capability_type'     => 'page',
 	);
-	
+	register_post_type( 'locations', $args ); 
 	// Registering your Custom Post Type
-	register_post_type( 'locations', $args );
-
 }
 
-/* Hook into the 'init' action so that the function
-* Containing our post type registration is not 
-* unnecessarily executed. 
-*/
-
-add_action( 'init', 'custom_post_type', 0 );
-
-
-
-function add_my_post_types_to_query( $query ) {
-	if ( $query->is_main_query() )
-		$query->set( 'post_type', array( 'post', 'locations' ) );
-	return $query;
-}
-add_action( 'pre_get_posts', 'add_my_post_types_to_query' ); 
-// the code is fine if the links to Custom posts are not working change and reset the permalinks settings - under the settings menu in the WP tool bar 
+add_action( 'init', 'custom_post_type', 0 );	
+// Hook into the 'init' action to genarate the custom post 
 
 
 require get_stylesheet_directory() . '/inc/options.php';
-// FINISH CUSTOM POST TYPE
 
 
  
