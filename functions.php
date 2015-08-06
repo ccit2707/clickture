@@ -86,56 +86,8 @@ add_action( 'after_setup_theme', 'clickture_setup' );
  * @global int $content_width
  */
  
-// SAAD BEGIN CUSTOM POST TYPE	
-function custom_post_type() 
-{
 
-	// Set UI labels for Custom Post Type
-	$labels = array(
-		'name'                => __( 'Locations', 'Post Type General Name', 'clickture' ),
-		'singular_name'       => __( 'Location', 'Post Type Singular Name', 'clickture' ),
-		'menu_name'           => __( 'Locations', 'clickture' ),
-		'all_items'           => __( 'All Locations', 'clickture' ),
-		'view_item'           => __( 'View Location', 'clickture' ),
-		'add_new_item'        => __( 'Add New Location', 'clickture' ),
-		'add_new'             => __( 'Add New Location', 'clickture' ),
-		'edit_item'           => __( 'Edit Location', 'clickture' ),
-		'update_item'         => __( 'Update Location', 'clickture' ),
-		'search_items'        => __( 'Search Location', 'clickture' ),
-		'not_found'           => __( 'Not Found', 'clickture' ),
-		'not_found_in_trash'  => __( 'Not found in Trash', 'clickture' ),
-	);
-	
-	// Set other options for Custom Post Type
-	
-	$args = array(
-		'label'               => __( 'locations', 'clickture' ),
-		'description'         => __( 'Interesting Locations in the GTA', 'clickture' ),
-		'labels'              => $labels,
-		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'comments', ), 
-		// Features of the CPT supports in Post Editor 
-		'taxonomies'          => array( 'category', 'post_tag'), 
-		// adds the regular WP categories and tags to the CPT 
-		'hierarchical'        => true,
-		'public'              => true,
-		'show_ui'             => true,
-		'show_in_menu'        => true,
-		'show_in_nav_menus'   => true,
-		'show_in_admin_bar'   => true,
-		'menu_position'       => 5,
-		'can_export'          => true,
-		'has_archive'         => true,
-		'exclude_from_search' => false,
-		'publicly_queryable'  => true,
-		'capability_type'     => 'page',
-	);
-	register_post_type( 'locations', $args ); 
-	// Registering your Custom Post Type
-}
-
-add_action( 'init', 'custom_post_type', 0 );	
-// Hook into the 'init' action to genarate the custom post 
-
+// Adds posts in the custom post type: locations to appear in queries if they use the regular WP category taxonomy 
 function show_cpt_in_categories ($query)
 {
 	if( $query->is_category() && $query->is_main_query() )
@@ -145,12 +97,11 @@ function show_cpt_in_categories ($query)
 }
 add_action('pre_get_posts', 'show_cpt_in_categories');
 
+// loads options.php located in the theme's inc forlder 
+require get_template_directory() . '/inc/options.php';
 
 
-require get_stylesheet_directory() . '/inc/options.php';
 
-
- 
 function clickture_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'clickture_content_width', 640 );
 }

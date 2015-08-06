@@ -7,17 +7,17 @@
  */
  
  ?>
-	<div id="header">
-		<?php get_header(); ?>
-	</div>	
+	<?php get_header(); ?>
+		
 		
 	<div id="gridcontainer">
 		<?php
 			$counter = 1;
 			$grid = 2;	
 			 
-			
-			$args = array('post_type' => 'locations', 'showposts' => 4, 'order' => 'ASC' );
+			$paged = ( get_query_var('page') ) ? get_query_var('page') : 1; 
+
+			$args = array('post_type' => 'locations', 'showposts' => 2, 'order' => 'ASC', 'paged' => $paged );
 			$my_query = new WP_Query($args);
 		?>		
 		
@@ -27,25 +27,34 @@
 
         if ($counter == 1)
 		{
-	?>		<div id="gridleft">
+	?>		<div class="gridleft">
 			<h3> <a href=" <?php the_permalink() ?> "> <?php the_title(); ?> </a></h3>
-			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail('medium'); ?></a>
+			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
 			</div>
 	<?php	
 		}
         else if ($counter == $grid)
 		{
 	?>		
-			<div id="gridleft">
+			<div class="gridleft">
 			<h2> <a href=" <?php the_permalink() ?> "> <?php the_title(); ?> </a> </h2>
-			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail('medium'); ?></a>
+			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail('thumbnail'); ?></a>
 			</div>
 	<?php
-		}	
+		}
+
+		
+		
+		
+		
 		$counter == 1;
 		
 		endwhile;
+		
 		endif;
+		
+		echo get_next_posts_link( 'Older Entries', $my_query->max_num_pages );
+		echo get_previous_posts_link( 'Newer Entries' );
 	
 	?>
 	</div>
