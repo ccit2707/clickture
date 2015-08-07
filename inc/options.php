@@ -1,115 +1,88 @@
 <?php
 	
-	function cd_add_admin_menu()
+	function add_admin_menu()
 	{ 
 		add_menu_page( 'My Options Page', 'My Options Page', 'manage_options', 'my_options_page', 'my_theme_options_page', 'dashicons-hammer', 66 );
 	}
-	add_action( 'admin_menu', 'cd_add_admin_menu' );
+	add_action( 'admin_menu', 'add_admin_menu' );
 
 	
-
-	function cd_settings_init() 
+	function settings_init() 
 	{ 
 	
-		register_setting( 'theme_options', 'cd_options_settings' );
+		register_setting( 'theme_options', 'options_settings' );
 		
-		add_settings_section( 'cd_options_page_section',__( 'Your section description', 'codediva' ), 'cd_options_page_section_callback', 'theme_options');
+		add_settings_section( 'options_page_section',__( 'Your section description', 'codediva' ), 'options_page_section_callback', 'theme_options');
 		
-		function cd_options_page_section_callback() 
+		function options_page_section_callback() 
 		{ 
-			echo __( 'A description and detail about the section.' );
+			echo __( 'Select the changes you want to make and click save' );
 		}
 
-		
-		add_settings_field( 
-			'cd_text_field', 
-			__('Enter your text', 'codediva'), 
-			'cd_text_field_render', 
-			'theme_options', 
-			'cd_options_page_section' 
-		);
-		
-			add_settings_field( 
-			'cd_checkbox_field', 
-			__( 'Check your preference', 'codediva' ), 
-			'cd_checkbox_field_render', 
-			'theme_options', 
-			'cd_options_page_section' 
-		);
 
 		add_settings_field( 
-			'cd_radio_field', 
-			__( 'Choose an option', 'codediva' ), 
-			'cd_radio_field_render', 
+			'select_field', 
+			__( 'Change Background Color of Content Area'), //#page { color: ___ ; }
+			'select_field_render', 
 			'theme_options', 
-			'cd_options_page_section' 
+			'options_page_section' 
 		);
-
+		
 		add_settings_field( 
-			'cd_textarea_field', 
-			__( 'Enter content into the text area', 'codediva' ), 
-			'cd_textarea_field_render', 
+			'select_field_2', 
+			__( 'Change Text Color for Posts'), //#body { background: ___ ; }
+			'select_field_render_2', 
 			'theme_options', 
-			'cd_options_page_section' 
+			'options_page_section' 
 		);
-
+		
 		add_settings_field( 
-			'cd_select_field', 
-			__( 'Choose from the dropdown', 'codediva' ), 
-			'cd_select_field_render', 
+			'select_field_3', 
+			__( 'Change Text Size for Posts '), //#body { background: ___ ; }
+			'select_field_render_3', 
 			'theme_options', 
-			'cd_options_page_section' 
+			'options_page_section' 
 		);
 		
 		
-		
-		function cd_text_field_render() { 
-			$options = get_option( 'cd_options_settings' );
+		function select_field_render() { 
+			$options = get_option( 'options_settings' );
 			?>
-			<input type="text" name="cd_options_settings[cd_text_field]" value="<?php if (isset($options['cd_text_field'])) echo $options['cd_text_field']; ?>">
-			<?php
-		}
-		
-		function cd_checkbox_field_render() { 
-			$options = get_option( 'cd_options_settings' );
-			?>
-			<input type="checkbox" name="cd_options_settings[cd_checkbox_field]" <?php if (isset($options['cd_checkbox_field'])) checked( $options['cd_checkbox_field'], 1 ); ?> value="1">
-			<?php
-		}
-		
-		
-		function cd_radio_field_render() { 
-			$options = get_option( 'cd_options_settings' );
-			?>
-			<input type="radio" name="cd_options_settings[cd_radio_field]" <?php if (isset($options['cd_radio_field'])) checked( $options['cd_radio_field'], 1 ); ?> value="1">
-			<?php
-		}
-		
-		
-		function cd_textarea_field_render() { 
-			$options = get_option( 'cd_options_settings' );
-			?>
-			<textarea cols="40" rows="5" name="cd_options_settings[cd_textarea_field]"> 
-				<?php if (isset($options['cd_textarea_field'])) echo $options['cd_textarea_field']; ?>
-			</textarea>
-			<?php
-		}
-		
-		
-		function cd_select_field_render() { 
-			$options = get_option( 'cd_options_settings' );
-			?>
-			<select name="cd_options_settings[cd_select_field]">
-				<option value="1" <?php if (isset($options['cd_select_field'])) selected( $options['cd_select_field'], 1 ); ?>>Option 1</option>
-				<option value="2" <?php if (isset($options['cd_select_field'])) selected( $options['cd_select_field'], 2 ); ?>>Option 2</option>
+			<select name="options_settings[select_field]">
+				<option value="1" <?php if (isset($options['select_field'])) selected( $options['select_field'], 1 ); ?>>Blue</option>	<!-- #352F1B --->
+				<option value="2" <?php if (isset($options['select_field'])) selected( $options['select_field'], 2 ); ?>>Black</option>
+				<option value="3" <?php if (isset($options['select_field'])) selected( $options['select_field'], 3 ); ?>>Khaki</option>
 			</select>
 		<?php
 		}
 		
-		function my_theme_options_page(){ 
+		function select_field_render_2() { 
+			$options = get_option( 'options_settings' );
+			?>
+			<select name="options_settings[select_field_2]">
+				<option value="1" <?php if (isset($options['select_field_2'])) selected( $options['select_field_2'], 1 ); ?>>White</option> 
+				<option value="2" <?php if (isset($options['select_field_2'])) selected( $options['select_field_2'], 2 ); ?>>Black</option>
+				<option value="3" <?php if (isset($options['select_field_2'])) selected( $options['select_field_2'], 3 ); ?>>Yellow</option>
+			</select>
+		<?php
+		}
+		
+		function select_field_render_3() { 
+			$options = get_option( 'options_settings' );
+			?>
+			<select name="options_settings[select_field_3]">
+				<option value="1" <?php if (isset($options['select_field_3'])) selected( $options['select_field_3'], 1 ); ?>>Small</option> 	<!-- 1em --->
+				<option value="2" <?php if (isset($options['select_field_3'])) selected( $options['select_field_3'], 2 ); ?>>Medium</option>	<!-- 1.25em --->
+				<option value="3" <?php if (isset($options['select_field_3'])) selected( $options['select_field_3'], 3 ); ?>>Large</option>		<!-- 2.5em --->
+			</select>
+		<?php
+		}
+		
+		function my_theme_options_page()
+		{ 
 			?>
 			<form action="options.php" method="post">
-				<h2>My Awesome Options Page</h2>
+				<h2>Theme Options Page</h2>
 				<?php
 				settings_fields( 'theme_options' );
 				do_settings_sections( 'theme_options' );
@@ -120,6 +93,6 @@
 		}
 
 	}
-	add_action( 'admin_init', 'cd_settings_init' );
-
+	add_action( 'admin_init', 'settings_init' );
+		
 ?>

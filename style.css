@@ -489,8 +489,13 @@ p{
 	height: auto;
 }
 
-#entry-meta {
-	display:none;
+/* this hides the author and publication date */ 
+.entry-meta{
+	display: none;
+}
+
+.screen-reader-text{
+	display: none;
 }
 
 

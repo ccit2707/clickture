@@ -100,6 +100,124 @@ add_action('pre_get_posts', 'show_cpt_in_categories');
 // loads options.php located in the theme's inc forlder 
 require get_template_directory() . '/inc/options.php';
 
+//Start Apply Styles from Options Page
+function apply_options_page($value)
+{
+	$value = get_option('options_settings');
+	
+	// Applies values for First Option 
+	if($value['select_field'] == 1)
+	{
+	?>
+		<style> 
+			#page
+			{
+				 background-color: #25AAE1;
+			}
+		</style>
+	<?php
+	}
+	elseif($value['select_field'] == 2)
+	{
+	?>
+		<style> 
+			#page
+			{
+				 background-color: black;
+			}
+		</style>
+	<?php
+	}
+	elseif($value['select_field'] == 3)
+	{
+	?>
+		<style> 
+			#page
+			{
+				 background-color: khaki;
+			}
+		</style>
+	<?php
+	}
+	
+	// Applies values for Second Option 
+	if($value['select_field_2'] == 1)
+	{
+	?>
+		
+		<style> 
+			#page
+			{
+				 color: white;
+			}
+		</style>
+		
+	<?php
+	}
+	elseif($value['select_field_2'] == 2)
+	{
+	?>
+		<style> 
+			#page
+			{
+				 color: black;
+			}
+		</style>
+	<?php
+	}
+	elseif($value['select_field_2'] == 3)
+	{
+	?>
+		<style> 
+			#page
+			{
+				 color: yellow;
+			}
+		</style>
+	<?php
+	}
+	
+	// Applies values for Third Option 
+	if($value['select_field_3'] == 1)
+	{
+	?>
+		
+		<style> 
+			#page
+			{
+				 font-size: 1em;
+			}
+		</style>
+		
+	<?php
+	}
+	elseif($value['select_field_3'] == 2)
+	{
+	?>
+		<style> 
+			#page
+			{
+				 font-size: 1.25em;
+			}
+		</style>
+	<?php
+	}
+	elseif($value['select_field_3'] == 3)
+	{
+	?>
+		<style> 
+			#page
+			{
+				 font-size: 2em;
+			}
+		</style>
+	<?php
+	}
+}
+add_action('wp_head', 'apply_options_page');
+// End Apply Styles from Options Page
+
+
 
 
 function clickture_content_width() {
@@ -169,16 +287,7 @@ require get_template_directory() . '/inc/jetpack.php';
 
 /*Kyle's added functions */ 
 
-	function fluffy_child_enqueue_scripts(){
-		wp_enqueue_style( 'parent-css', get_template_directory_uri() . '/style.css' );
-		//this links the css of the parent theme to the child theme's style.css 
-	}
-
-	add_action( 'wp_enqueue_scripts', 'fluffy_child_enqueue_scripts' );
-	//this links the php of the parent theme to the child theme 
-	/**
- * Register widgetized area and update sidebar with default widgets
- */
+ 
 	function widgets_init() {
 		//these allow the sidebar to exist
 		register_sidebar( array('name' => __( 'Footer Sidebar', 'clickture' ),'id' => 'sidebar-1','before_widget' => '<aside id="%1$s" class="widget %2$s">','after_widget' => "</aside>",'before_title' => '<div class="widget-title">','after_title' => '</div>',) );
@@ -190,7 +299,7 @@ require get_template_directory() . '/inc/jetpack.php';
 		$myavatar = get_stylesheet_directory_uri() . '/imgs/luna.png';
 		$avatar_defaults[$myavatar] = __( 'Custom Gravatar', 'YOUR TEXT DOMAIN' );
 		return $avatar_defaults;
-		// this provides my custom luna gravatar icon in the discussion options page 
+		// this provides my custom gravatar icon in the discussion options page 
 	}
 
 
@@ -202,13 +311,13 @@ require get_template_directory() . '/inc/jetpack.php';
 	add_filter( 'excerpt_length', 'custom_excerpt_length',999 );
 	/*this places a message and link after every post */ 
 	
-	function everything_is_awesome($content){
+	function call_out($content){
 		$content .= 'Check out more hotspots at <a
 href="http://www.seetorontonow.com/">http://www.seetorontonow.com/!</a>';
 		return $content;
 	}
 
-	add_filter( 'the_content', 'everything_is_awesome');
+	add_filter( 'the_content', 'call_out');
 	//this function dictates the text of the excerpt 'read more' section 
 	function new_excerpt_more( $more ) {
 		return ' <a class="read-more" href="' . get_permalink( get_the_ID() ) . '">' . __( 'Open your mind...', 'your-text-domain' ) . '</a>';
