@@ -27,7 +27,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 }
 
 .main-navigation ul {
-	display: none;
+	display: inline-flex;
 	list-style: none;
 	margin: 0;
 	padding-left: 0;
@@ -92,6 +92,11 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 .main-navigation .current_page_ancestor > a {
 }
 
+
+
+
+
+
 /* Small menu. */
 .menu-toggle,
 .main-navigation.toggled ul {
@@ -103,7 +108,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 		display: none;
 	}
 	.main-navigation ul {
-		display: block;
+		display: inline-flex;;
 	}
 }
 
@@ -246,6 +251,10 @@ h2 {
 }
 
 
+.grid-left{
+	display:block;
+}
+
 #signature{
 	height: auto;
 	max-width: 33%;
@@ -289,6 +298,53 @@ a:hover {
 a:active {
     color: #4c60A3;
 }
+
+
+/*Added by Saad*/
+.gridleft
+{
+	float: left; 
+	width: 25%;
+	margin: 3em 5em 0em 12.5em;
+	
+}
+
+.gridright
+{
+	float: left; 
+	width: 25%;
+	margin: 3em 0em 0em 0em;
+}
+
+
+#gridcontainer
+{
+	width: 100%; 
+	margin: 0 0 10px 0;
+}
+
+#gridcontainer h2 a
+{
+	color: #4C60A3; 
+	font-size: 1em;
+}
+#navigate_btn
+{
+	clear: both;
+	text-align: center;
+	padding-top: 3em;
+}
+#colophon
+{
+	clear: both;
+	padding-top: 1em;
+	text-align: center;
+}
+
+
+
+
+
 
 
 
